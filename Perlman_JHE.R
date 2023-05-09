@@ -1,5 +1,5 @@
-setwd("//Users/Rachel/Desktop/Perlman et al. 2023 Files")
-load("Perlman_JHE")
+## setwd("//Users/Rachel/Desktop/Perlman et al. 2023 Files")
+
 ## Libraries
 library(plyr)
 library(dplyr)
@@ -119,12 +119,8 @@ dev.off()
 
 
 ##### FIGURE 2ab | Feeding time residuals and Moving time residuals vs. Rainfall ####
-df1 <- read.csv("df.Feed.csv",header=T,sep=",", fill=T)
 modelFEED <- glmer.nb(sum2 ~ Rain30 + MinT + (1|ID), data=df1)
-
-df2 <- read.csv("df.Move.csv",header=T,sep=",", fill=T)
 modelMOVE <- glmer.nb(sum ~ Rain30 + MinT + (1|ID), data=df2)
-
 
 # 2a
 fig2a <- visreg(modelFEED,"Rain30",type="contrast",scale="linear", line=list(col=c("black")), ylim=c(-4,2), gg=T,
